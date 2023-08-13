@@ -1,6 +1,7 @@
 VERSION = "1.0.0"
 ARG_SHORT = r"\b(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])\b"
 ARG_LONG = r"\b(6553[0-5]|655[0-2][0-9]|65[0-4][0-9]{2}|6[0-4][0-9]{3}|[1-5][0-9]{4}|[1-9][0-9]?[0-9]?[0-9]?|0)\b"
+COORD = r"\b(2[0-4]|1?[0-9])\b"
 def enum(args) -> str:
     r = "\\b("
     for element in args:
@@ -9,8 +10,8 @@ def enum(args) -> str:
 START = "^"
 END = "( +.*|$)"
 COMMANDS = [
-    f"^//{END}"
-    f"{START}@ {enum(['on_step','on_collect','on_explode','on_destroy','on_init','on_tick'])} on \\b(2[0-4]|1?[0-9])\\b \\b(2[0-4]|1?[0-9])\\b{END}"
+    f"^//{END}",
+    f"{START}@ {enum(['on_step','on_collect','on_explode','on_destroy','on_init','on_tick'])} on {COORD} {COORD}{END}",
     f"{START}end{END}",
     f"{START}add {ARG_LONG} , {ARG_LONG} => {ARG_LONG}{END}",
     f"{START}subtract {ARG_LONG} , {ARG_LONG} => {ARG_LONG}{END}",
