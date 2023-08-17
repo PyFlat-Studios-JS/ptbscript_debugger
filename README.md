@@ -1,3 +1,3 @@
-# ptbscript_debugger
+# PTB-Script-Debugger
 
-A simple debugger for ptbscript
+A simple syntax debugger for Ptbscript
